@@ -12,7 +12,7 @@ function RecipeList() {
       {state.recipes.length === 0 ? (
         <div className="recipes-list-item">
           <div className="recipes-list-item-content">
-            You don't have any recipes yet...
+            You don't have any recipes...
           </div>
         </div>
       ) : (
@@ -28,7 +28,12 @@ function RecipeList() {
             </div>
             {expanded === index ? (
               <div className="recipes-list-item-content">
-                <RecipeDetails id={recipe.id} />
+                <RecipeDetails
+                  id={recipe.id}
+                  onDelete={() => {
+                    setExpanded(false);
+                  }}
+                />
               </div>
             ) : null}
           </div>

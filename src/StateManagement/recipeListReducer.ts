@@ -26,17 +26,22 @@ export function recipeListReducer(
     }
     case "EDIT_RECIPE": {
       let newState = { ...state };
-      newState.recipes = state.recipes.filter(
+      newState.recipes = [...state.recipes];
+      const index = newState.recipes.findIndex(
         (recipe) => recipe.id === action.payload.id
       );
-      newState.recipes = state.recipes.concat([action.payload]);
+      if (index < 0) {
+        return state;
+      }
+
+      newState.recipes[index] = action.payload;
       return newState;
     }
     case "DELETE_RECIPE":
       {
         let newState = { ...state };
         newState.recipes = state.recipes.filter(
-          (recipe) => recipe.id === action.payload
+          (recipe) => recipe.id !== action.payload
         );
         return newState;
       }

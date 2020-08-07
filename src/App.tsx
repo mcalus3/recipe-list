@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
-import { useRecipeListData } from "./StateManagement/RecipeListStateProvider";
 import RecipeList from "./RecipeList";
+import RecipeDetailsEdit from "./RecipeDetailsEdit";
 
 function App() {
-  const { dispatch } = useRecipeListData();
+  const [newRecipeOpen, setNewRecipeOpen] = useState(false);
 
   return (
     <>
@@ -21,14 +21,18 @@ function App() {
         <RecipeList />
         <button
           onClick={() => {
-            dispatch({
-              type: "ADD_RECIPE",
-              payload: { name: "recipe", ingredients: ["a", "b", "c"] },
-            });
+            setNewRecipeOpen(true);
           }}
         >
           Add new recipe
         </button>
+        {newRecipeOpen ? (
+          <RecipeDetailsEdit
+            onClose={() => {
+              setNewRecipeOpen(false);
+            }}
+          />
+        ) : null}
       </div>
     </>
   );
