@@ -25,15 +25,15 @@ export function recipeListReducer(
       return newState;
     }
     case "EDIT_RECIPE": {
-      let newState = { ...state };
-      newState.recipes = [...state.recipes];
-      const index = newState.recipes.findIndex(
+      const index = state.recipes.findIndex(
         (recipe) => recipe.id === action.payload.id
       );
       if (index < 0) {
         return state;
       }
 
+      let newState = { ...state };
+      newState.recipes = [...state.recipes];
       newState.recipes[index] = action.payload;
       return newState;
     }

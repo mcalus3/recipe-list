@@ -10,7 +10,10 @@ type Props = {
 
 const RecipeDetailsEdit: React.FC<Props> = ({ id, onClose }) => {
   const { state: initialValues, dispatch } = useRecipeDetailsData(id);
-  const [formState, setFormState] = useState(initialValues);
+  const [formState, setFormState] = useState({
+    ...initialValues,
+    ingredients: initialValues.ingredients.join(", "),
+  });
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     setFormState({
@@ -19,14 +22,21 @@ const RecipeDetailsEdit: React.FC<Props> = ({ id, onClose }) => {
     });
   };
   const handleSubmit = () => {
+    const payload = {
+      name: formState.name,
+      ingredients: formState.ingredients
+        .split(",")
+        .map((i) => i.trim())
+        .filter((i) => i !== ""),
+    };
     const action = id
       ? {
           type: "EDIT_RECIPE" as const,
-          payload: { ...formState, id },
+          payload: { ...payload, id },
         }
       : {
           type: "ADD_RECIPE" as const,
-          payload: { ...formState },
+          payload,
         };
     dispatch(action);
     onClose();
@@ -49,6 +59,7 @@ const RecipeDetailsEdit: React.FC<Props> = ({ id, onClose }) => {
           <input
             type="text"
             name="ingredients"
+            placeholder="type ingredients separated by commas"
             value={formState.ingredients}
             onChange={handleChange}
           />

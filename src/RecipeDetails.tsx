@@ -6,8 +6,6 @@ import RecipeDetailsEdit from "./RecipeDetailsEdit";
 
 type Props = {
   id: RecipeId;
-  onClose?: () => void;
-  editMode?: boolean;
   onDelete: () => void;
 };
 
