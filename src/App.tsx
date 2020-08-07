@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <header className="App-header">
-        <div>Recipe List</div>
+        <div>Recipe List example app</div>
         <a
           className="Github-link"
           href="https://github.com/mcalus3/recipe-list"
@@ -19,20 +19,27 @@ function App() {
       </header>
       <div className="content">
         <RecipeList />
-        <button
-          onClick={() => {
-            setNewRecipeOpen(true);
-          }}
-        >
-          Add new recipe
-        </button>
         {newRecipeOpen ? (
-          <RecipeDetailsEdit
-            onClose={() => {
-              setNewRecipeOpen(false);
+          <div className="add-recipe">
+            Add new recipe to list:
+            <div className="add-recipe-form">
+              <RecipeDetailsEdit
+                onClose={() => {
+                  setNewRecipeOpen(false);
+                }}
+              />
+            </div>
+          </div>
+        ) : (
+          <button
+            className="add-button"
+            onClick={() => {
+              setNewRecipeOpen(true);
             }}
-          />
-        ) : null}
+          >
+            Add new recipe
+          </button>
+        )}
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./RecipeDetails.css";
+import "./RecipeDetailsEdit.css";
 import { useRecipeDetailsData } from "./StateManagement/RecipeListStateProvider";
 import { RecipeId } from "./StateManagement/recipeListReducer";
 
@@ -45,27 +45,31 @@ const RecipeDetailsEdit: React.FC<Props> = ({ id, onClose }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>
-          Name:
+        <label htmlFor="name">Name:</label>
+        <input
+          type="text"
+          name="name"
+          value={formState.name}
+          onChange={handleChange}
+        />
+        <label htmlFor="ingredients">ingredients:</label>
+        <input
+          type="text"
+          name="ingredients"
+          placeholder="type ingredients separated by commas..."
+          value={formState.ingredients}
+          onChange={handleChange}
+        />
+        <div className="buttons">
           <input
-            type="text"
-            name="name"
-            value={formState.name}
-            onChange={handleChange}
+            type="submit"
+            value="Submit"
+            className="button submit-button"
           />
-        </label>
-        <label>
-          ingredients:
-          <input
-            type="text"
-            name="ingredients"
-            placeholder="type ingredients separated by commas"
-            value={formState.ingredients}
-            onChange={handleChange}
-          />
-        </label>
-        <input type="submit" value="Submit" />
-        <button onClick={onClose}>Cancel</button>
+          <button onClick={onClose} className="button cancel-button">
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -14,23 +14,35 @@ const RecipeDetails: React.FC<Props> = ({ id, onDelete }) => {
   const [editOpened, setEditOpened] = useState(false);
 
   return editOpened ? (
-    <RecipeDetailsEdit
-      id={id}
-      onClose={() => {
-        setEditOpened(false);
-      }}
-    />
+    <>
+      Edit recipe:
+      <RecipeDetailsEdit
+        id={id}
+        onClose={() => {
+          setEditOpened(false);
+        }}
+      />
+    </>
   ) : (
     <div>
-      <div>ingredients: {state.ingredients}</div>
+      <div>
+        ingredients:
+        <ol className="ingredients-list">
+          {state.ingredients.map((i) => (
+            <li key={i}>{i}</li>
+          ))}
+        </ol>
+      </div>
       <button
+        className="button edit-button"
         onClick={() => {
           setEditOpened(true);
         }}
       >
-        Edit
+        Edit recipe
       </button>
       <button
+        className="button delete-button"
         onClick={() => {
           dispatch({
             type: "DELETE_RECIPE",
@@ -39,7 +51,7 @@ const RecipeDetails: React.FC<Props> = ({ id, onDelete }) => {
           onDelete();
         }}
       >
-        Delete
+        Delete recipe
       </button>
     </div>
   );

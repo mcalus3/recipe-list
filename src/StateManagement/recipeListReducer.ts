@@ -37,14 +37,12 @@ export function recipeListReducer(
       newState.recipes[index] = action.payload;
       return newState;
     }
-    case "DELETE_RECIPE":
-      {
-        let newState = { ...state };
-        newState.recipes = state.recipes.filter(
-          (recipe) => recipe.id !== action.payload
-        );
-        return newState;
-      }
-      throw new Error(`Invoked unhandled action type '${action.type}'.`);
+    case "DELETE_RECIPE": {
+      let newState = { ...state };
+      newState.recipes = state.recipes.filter(
+        (recipe) => recipe.id !== action.payload
+      );
+      return newState;
+    }
   }
 }
