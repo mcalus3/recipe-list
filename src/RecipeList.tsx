@@ -10,7 +10,7 @@ function RecipeList() {
 
   return (
     <>
-      Your recipies:
+      Your recipes:
       <div className="recipes-list">
         {state.recipes.length === 0 ? (
           <div className="recipes-list-item">
