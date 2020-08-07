@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { useRecipeListData } from "./StateManagement/RecipeListStateProvider";
+import RecipeList from "./RecipeList";
 
 function App() {
+  const { dispatch } = useRecipeListData();
+
   return (
-    <div className="App">
+    <>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <div>Recipe List</div>
         <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          className="Github-link"
+          href="https://github.com/mcalus3/recipe-list"
         >
-          Learn React
+          Github repository
         </a>
       </header>
-    </div>
+      <div className="content">
+        <RecipeList />
+        <button
+          onClick={() => {
+            dispatch({
+              type: "ADD_RECIPE",
+              payload: { name: "recipe", ingredients: ["a", "b", "c"] },
+            });
+          }}
+        >
+          Add new recipe
+        </button>
+      </div>
+    </>
   );
 }
 

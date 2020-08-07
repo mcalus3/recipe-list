@@ -1,0 +1,42 @@
+.recipes-list {
+  background-color: #fafafa;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+}
+
+.recipes-list-header {
+  position: relative;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.3s;
+}
+
+.recipes-list-content {
+  background-color: #fff;
+  border-top: 1px solid #d9d9d9;
+}
+
+.recipes-list-item {
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.recipes-list-item-header {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: #fafafa;
+}
+
+.recipes-list-item-content {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #fff;
+  border-top: 1px solid #d9d9d9;
+}
+
+.recipes-list-item-header:hover {
+  cursor: pointer;
+}
