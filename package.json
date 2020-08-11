@@ -9,6 +9,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/testing-library__cypress": "^5.0.6",
     "@types/uuid": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -39,8 +40,12 @@
     ]
   },
   "devDependencies": {
+    "@bahmutov/add-typescript-to-cypress": "^2.1.2",
+    "@testing-library/cypress": "^6.0.0",
     "@testing-library/jest-dom": "^5.11.2",
     "@testing-library/react": "^10.4.8",
-    "jest-environment-jsdom-sixteen": "^1.0.3"
+    "cypress": "^4.12.1",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
+    "webpack": "^4.44.1"
   }
 }
