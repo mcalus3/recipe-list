@@ -44,16 +44,18 @@ const RecipeDetailsEdit: React.FC<Props> = ({ id, onClose }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} data-testid="create-recipe-form">
         <label htmlFor="name">Name:</label>
         <input
+          id="name"
           type="text"
           name="name"
           value={formState.name}
           onChange={handleChange}
         />
-        <label htmlFor="ingredients">ingredients:</label>
+        <label htmlFor="ingredients">Ingredients:</label>
         <input
+          id="ingredients"
           type="text"
           name="ingredients"
           placeholder="type ingredients separated by commas..."
